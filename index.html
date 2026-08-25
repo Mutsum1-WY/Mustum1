@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="一个安静、清醒的个人文章档案。" />
+  <title>FIELD NOTES · 个人文章库</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回首页">
+      <span class="brand-mark">M/</span>
+      <span>FIELD NOTES</span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      <a class="active" href="#articles">文章</a>
+      <a href="#about">关于我</a>
+      <a href="#newsletter">订阅</a>
+    </nav>
+    <button class="icon-button menu-toggle" type="button" aria-label="打开菜单" title="打开菜单">☰</button>
+    <a class="header-link" href="#newsletter">保持联系 <span>↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="intro-section">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> PERSONAL ARCHIVE / 2024—2025</div>
+      <div class="intro-grid">
+        <h1>写下那些<br /><em>值得留下</em>的想法。</h1>
+        <div class="intro-copy">
+          <p>这里是我的私人文章档案。关于设计、技术，以及我们如何更有意识地生活。</p>
+          <a class="text-link" href="#articles">浏览全部文章 <span>↓</span></a>
+        </div>
+      </div>
+      <div class="intro-footer"><span>04° 38′ 21″ N, 74° 05′ 47″ W</span><span>SCROLL TO EXPLORE <span class="scroll-line"></span></span></div>
+    </section>
+
+    <section class="featured-section" aria-labelledby="featured-title">
+      <div class="section-label"><span>01</span><span>精选文章</span></div>
+      <article class="featured-card">
+        <div class="featured-image image-one"><span class="image-caption">A QUIET PLACE TO THINK</span></div>
+        <div class="featured-content">
+          <div class="post-meta"><span>设计方法</span><span>·</span><span>8 分钟阅读</span></div>
+          <h2 id="featured-title">留白不是空白，<br />而是思考发生的地方</h2>
+          <p>我们总在努力填满空间、日程和注意力。但真正重要的想法，往往在没有被安排的时刻出现。</p>
+          <div class="featured-bottom"><span class="date">2025.01.18</span><button class="read-button" data-read="留白不是空白">阅读文章 <span>↗</span></button></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="articles-section" id="articles" aria-labelledby="articles-title">
+      <div class="articles-heading">
+        <div class="section-label"><span>02</span><span>文章档案</span></div>
+        <h2 id="articles-title">所有文章</h2>
+        <span class="article-count" id="articleCount">06 篇文章</span>
+      </div>
+      <div class="controls">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="搜索文章" /></label>
+        <div class="filter-list" role="group" aria-label="按主题筛选">
+          <button class="filter-button active" data-filter="全部">全部</button>
+          <button class="filter-button" data-filter="设计">设计</button>
+          <button class="filter-button" data-filter="生活">生活</button>
+          <button class="filter-button" data-filter="技术">技术</button>
+        </div>
+        <label class="sort-select">排序
+          <select id="sortSelect" aria-label="文章排序"><option value="newest">最新发布</option><option value="oldest">最早发布</option></select>
+        </label>
+      </div>
+      <div class="article-grid" id="articleGrid"></div>
+      <p class="empty-state" id="emptyState" hidden>没有找到匹配的文章。</p>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="section-label"><span>03</span><span>关于作者</span></div>
+      <div class="about-grid"><h2>你好，我是<br /><em>林默。</em></h2><div><p>一名独立设计师和偶尔写作者，生活在城市与屏幕之间。习惯观察细节，也习惯把问题写下来。</p><a class="text-link" href="mailto:hello@example.com">hello@example.com <span>↗</span></a></div></div>
+    </section>
+
+    <section class="newsletter-section" id="newsletter">
+      <div><div class="section-label"><span>04</span><span>不定期通讯</span></div><h2>把新文章寄给你。</h2></div>
+      <form class="newsletter-form" id="newsletterForm"><label class="sr-only" for="emailInput">邮箱地址</label><input id="emailInput" type="email" placeholder="你的邮箱地址" required /><button type="submit">订阅 <span>↗</span></button><p id="formMessage" role="status"></p></form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>© 2025 FIELD NOTES</span><span>DESIGNED & WRITTEN WITH INTENTION</span><a href="#top">回到顶部 ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
