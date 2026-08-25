@@ -54,7 +54,6 @@ button { font: inherit; color: inherit; }
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-textarea:focus-visible,
 label:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -187,24 +186,6 @@ body.topbar-fixed .topbar {
 }
 
 .btn.ghost:hover { border-color: var(--faint); background: var(--bg); }
-
-.btn.primary {
-  background: var(--accent);
-  color: #f6faf6;
-}
-
-.btn.primary:hover { background: var(--accent-strong); box-shadow: 0 2px 8px rgba(30, 122, 90, .3); }
-
-.btn.icon-btn {
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  font-size: 16px;
-  border-color: var(--line-strong);
-  background: var(--panel);
-}
-
-.btn.icon-btn:hover { background: var(--bg); }
 
 /* ============ 首页顶部展示区（Hero：整页背景 + 滚动自动收缩） ============ */
 
@@ -345,9 +326,6 @@ body.topbar-fixed .topbar {
   font-size: 15.5px;
   border-radius: 11px;
 }
-
-.hero .btn.primary { background: #f7f5ee; color: #1c2a22; }
-.hero .btn.primary:hover { background: #fff; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); }
 
 .hero .btn.hero-ghost {
   border-color: rgba(247, 245, 238, .55);

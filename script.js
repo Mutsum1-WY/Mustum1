@@ -256,7 +256,6 @@ let sortMode = prefs.sortMode || 'updated';
 const el = {
   viewList: $('#viewList'),
   viewReader: $('#viewReader'),
-  listTitle: $('#listTitle'),
   listCount: $('#listCount'),
   articleGrid: $('#articleGrid'),
   emptyState: $('#emptyState'),
@@ -378,7 +377,6 @@ function getVisibleArticles() {
 function renderList() {
   const visible = getVisibleArticles();
   el.listCount.textContent = `${visible.length} / ${articles.length} 篇`;
-  el.listTitle.textContent = '全部文章';
 
   el.articleGrid.innerHTML = visible.map((a) => {
     const tags = (a.tags || []).slice(0, 4)
