@@ -479,6 +479,14 @@ body.topbar-fixed .topbar {
   white-space: nowrap;
 }
 
+.row-sub {
+  margin: 5px 0 0;
+  font-family: var(--serif);
+  font-size: 14.5px;
+  font-style: italic;
+  color: var(--muted);
+}
+
 .row-excerpt {
   margin: 8px 0 0;
   font-size: 15px;

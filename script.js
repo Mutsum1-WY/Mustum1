@@ -154,6 +154,7 @@ const FIRST_ARTICLE_ID = '2026-01-01-first';
 const FIRST_ARTICLE = {
   id: FIRST_ARTICLE_ID,
   title: 'For You',
+  subtitle: '关于这个网站的一切，它的由来、建造过程以及作用',   // 卡片副标题
   category: '',
   tags: [],
   link: '2026/For%20You/index.html',   // 文章页地址（点击直接跳转）
@@ -197,10 +198,11 @@ function loadArticles() {
   if (!data.some((a) => a.id === FIRST_ARTICLE_ID)) {
     data.unshift({ ...FIRST_ARTICLE });
   } else {
-    // 标题/跳转地址/日期同步：仅当仍是旧模板（或缺少跳转地址、仍是模板日期）时更新，用户改过的不动
+    // 标题/跳转地址/日期/副标题同步：仅当仍是旧模板（或缺少字段、仍是模板日期）时更新，用户改过的不动
     const first = data.find((a) => a.id === FIRST_ARTICLE_ID);
-    if (first && (first.title === '第一篇文章' || !first.link || first.updatedAt === '2026-01-01T00:00:00')) {
+    if (first && (first.title === '第一篇文章' || !first.link || !first.subtitle || first.subtitle === '内容待定' || first.updatedAt === '2026-01-01T00:00:00')) {
       first.title = FIRST_ARTICLE.title;
+      first.subtitle = FIRST_ARTICLE.subtitle;
       first.link = FIRST_ARTICLE.link;
       first.createdAt = FIRST_ARTICLE.createdAt;
       first.updatedAt = FIRST_ARTICLE.updatedAt;
@@ -393,6 +395,7 @@ function renderList() {
             ${a.category ? `<span class="chip">${esc(a.category)}</span>` : ''}
             <h3>${esc(a.title)}</h3>
           </div>
+          ${a.subtitle ? `<p class="row-sub">${esc(a.subtitle)}</p>` : ''}
           ${excerpt ? `<p class="row-excerpt">${excerpt}</p>` : ''}
           ${tags ? `<div class="row-tags">${tags}</div>` : ''}
         </div>
