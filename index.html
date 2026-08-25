@@ -3,88 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="一个安静、清醒的个人文章档案。" />
-  <title>FIELD NOTES · 个人文章库</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="风文库 Wind Pages · 个人文章存储：本地保存、搜索与阅读你的文章。" />
+  <title>风文库 · Wind Pages</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231e7a5a'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23f5f4ef' font-family='serif' font-weight='bold'%3E风%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="返回首页">
-      <span class="brand-mark">M/</span>
-      <span>FIELD NOTES</span>
-    </a>
-    <nav class="main-nav" aria-label="主导航">
-      <a class="active" href="#articles">文章</a>
-      <a href="#about">关于我</a>
-      <a href="#newsletter">订阅</a>
-    </nav>
-    <button class="icon-button menu-toggle" type="button" aria-label="打开菜单" title="打开菜单">☰</button>
-    <a class="header-link" href="#newsletter">保持联系 <span>↗</span></a>
+<body class="topbar-fixed">
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <button class="brand" id="homeBtn" title="回到文章列表">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span class="brand-name">风文库</span>
+      <span class="brand-sub">WIND PAGES</span>
+    </button>
+
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="search" placeholder="搜索标题、正文、标签…" autocomplete="off" aria-label="搜索文章" />
+    </div>
   </header>
 
-  <main id="top">
-    <section class="intro-section">
-      <div class="eyebrow"><span class="eyebrow-dot"></span> PERSONAL ARCHIVE / 2024—2025</div>
-      <div class="intro-grid">
-        <h1>写下那些<br /><em>值得留下</em>的想法。</h1>
-        <div class="intro-copy">
-          <p>这里是我的私人文章档案。关于设计、技术，以及我们如何更有意识地生活。</p>
-          <a class="text-link" href="#articles">浏览全部文章 <span>↓</span></a>
+  <div class="layout">
+
+    <!-- 主区域 -->
+    <main class="main">
+
+      <!-- 列表视图 -->
+      <section class="view" id="viewList" aria-label="文章列表">
+
+        <!-- 首页顶部展示区（背景图在 styles.css 的 --hero-img 处更换；整页显示，向下滚动自动收缩） -->
+        <div class="hero-wrap" id="heroWrap">
+          <section class="hero" aria-label="首页展示">
+            <div class="hero-inner">
+              <div class="hero-eyebrow">MUSTUM1 · PERSONAL ARCHIVE</div>
+              <div class="hero-title-row">
+                <h1 class="hero-title">Mustum<em>1</em></h1>
+                <a class="hero-avatar" href="https://github.com/Mutsum1-WY" target="_blank" rel="noopener noreferrer" title="GitHub · Mutsum1-WY">
+                  <img src="https://github.com/Mutsum1-WY.png" alt="Mutsum1-WY 的头像" width="56" height="56" onerror="this.closest('.hero-avatar').style.display='none'" />
+                </a>
+              </div>
+              <p class="hero-sub" id="heroSub">伤不是要你去忍耐的东西，痛是要说出来的。</p>
+              <div class="hero-actions">
+                <button class="btn hero-ghost" id="heroBrowseBtn" type="button">浏览全部文章 ↓</button>
+              </div>
+            </div>
+          </section>
         </div>
-      </div>
-      <div class="intro-footer"><span>04° 38′ 21″ N, 74° 05′ 47″ W</span><span>SCROLL TO EXPLORE <span class="scroll-line"></span></span></div>
-    </section>
 
-    <section class="featured-section" aria-labelledby="featured-title">
-      <div class="section-label"><span>01</span><span>精选文章</span></div>
-      <article class="featured-card">
-        <div class="featured-image image-one"><span class="image-caption">A QUIET PLACE TO THINK</span></div>
-        <div class="featured-content">
-          <div class="post-meta"><span>设计方法</span><span>·</span><span>8 分钟阅读</span></div>
-          <h2 id="featured-title">留白不是空白，<br />而是思考发生的地方</h2>
-          <p>我们总在努力填满空间、日程和注意力。但真正重要的想法，往往在没有被安排的时刻出现。</p>
-          <div class="featured-bottom"><span class="date">2025.01.18</span><button class="read-button" data-read="留白不是空白">阅读文章 <span>↗</span></button></div>
+        <div class="list-head">
+          <h1 id="listTitle">全部文章</h1>
+          <div class="list-head-right">
+            <span class="list-count" id="listCount"></span>
+            <label class="sort-select">排序
+              <select id="sortSelect" aria-label="文章排序">
+                <option value="updated">最近更新</option>
+                <option value="created">最新创建</option>
+                <option value="oldest">最早创建</option>
+                <option value="title">按标题</option>
+              </select>
+            </label>
+          </div>
         </div>
-      </article>
-    </section>
+        <div class="article-grid" id="articleGrid"></div>
 
-    <section class="articles-section" id="articles" aria-labelledby="articles-title">
-      <div class="articles-heading">
-        <div class="section-label"><span>02</span><span>文章档案</span></div>
-        <h2 id="articles-title">所有文章</h2>
-        <span class="article-count" id="articleCount">06 篇文章</span>
-      </div>
-      <div class="controls">
-        <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="搜索文章" /></label>
-        <div class="filter-list" role="group" aria-label="按主题筛选">
-          <button class="filter-button active" data-filter="全部">全部</button>
-          <button class="filter-button" data-filter="设计">设计</button>
-          <button class="filter-button" data-filter="生活">生活</button>
-          <button class="filter-button" data-filter="技术">技术</button>
+        <!-- 空状态 -->
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon" aria-hidden="true">📄</div>
+          <h2 id="emptyTitle">还没有任何文章</h2>
+          <p id="emptyText"></p>
+          <button class="btn ghost" id="clearFilterBtn" type="button" hidden>清除筛选</button>
         </div>
-        <label class="sort-select">排序
-          <select id="sortSelect" aria-label="文章排序"><option value="newest">最新发布</option><option value="oldest">最早发布</option></select>
-        </label>
-      </div>
-      <div class="article-grid" id="articleGrid"></div>
-      <p class="empty-state" id="emptyState" hidden>没有找到匹配的文章。</p>
-    </section>
 
-    <section class="about-section" id="about">
-      <div class="section-label"><span>03</span><span>关于作者</span></div>
-      <div class="about-grid"><h2>你好，我是<br /><em>林默。</em></h2><div><p>一名独立设计师和偶尔写作者，生活在城市与屏幕之间。习惯观察细节，也习惯把问题写下来。</p><a class="text-link" href="mailto:hello@example.com">hello@example.com <span>↗</span></a></div></div>
-    </section>
+        <!-- 主页底部区块 -->
+        <footer class="home-footer">
+          <div class="footer-inner">
+            <div class="footer-brand">
+              <span class="brand-dot" aria-hidden="true"></span>
+              <span>风文库</span>
+              <span class="footer-sub">WIND PAGES</span>
+            </div>
+            <p class="footer-desc">For wish, for blessing</p>
+            <button class="footer-top" id="footerTopBtn" type="button">回到顶部 ↑</button>
+          </div>
+        </footer>
+      </section>
 
-    <section class="newsletter-section" id="newsletter">
-      <div><div class="section-label"><span>04</span><span>不定期通讯</span></div><h2>把新文章寄给你。</h2></div>
-      <form class="newsletter-form" id="newsletterForm"><label class="sr-only" for="emailInput">邮箱地址</label><input id="emailInput" type="email" placeholder="你的邮箱地址" required /><button type="submit">订阅 <span>↗</span></button><p id="formMessage" role="status"></p></form>
-    </section>
-  </main>
+      <!-- 阅读视图 -->
+      <section class="view" id="viewReader" aria-label="文章阅读" hidden>
+        <div class="reader-head">
+          <button class="btn ghost" id="backBtn" type="button">← 返回列表</button>
+        </div>
+        <article class="reader" id="reader">
+          <header class="reader-header">
+            <div class="reader-meta">
+              <span class="chip" id="readerCategory"></span>
+              <span id="readerDate"></span>
+              <span id="readerWords"></span>
+            </div>
+            <h1 id="readerTitle"></h1>
+            <div class="tag-row" id="readerTags"></div>
+          </header>
+          <div class="markdown-body" id="readerContent"></div>
+          <footer class="reader-footer" id="readerFooter"></footer>
+        </article>
+      </section>
 
-  <footer class="site-footer"><span>© 2025 FIELD NOTES</span><span>DESIGNED & WRITTEN WITH INTENTION</span><a href="#top">回到顶部 ↑</a></footer>
+      <!-- 写作功能已移除 -->
+
+    </main>
+  </div>
+
+  <noscript><p style="padding:24px;text-align:center">风文库需要启用 JavaScript 才能运行。</p></noscript>
   <script src="script.js"></script>
 </body>
 </html>
