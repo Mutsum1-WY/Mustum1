@@ -149,44 +149,6 @@ function renderMarkdown(src) {
 
 /* ---------------- 数据层 ---------------- */
 
-const SEED_ARTICLES = [
-  {
-    id: 'seed-welcome',
-    title: '欢迎使用风文库',
-    category: '说明',
-    tags: ['使用指南'],
-    createdAt: '2025-02-01T09:00:00',
-    updatedAt: '2025-02-01T09:00:00',
-    content: `这是一篇示例文章，也是你的第一份「风文库」使用指南。
-
-## 你能做什么
-
-- **搜索**：顶部搜索框会同时检索标题、正文和标签。
-- **浏览**：左侧边栏可按分类、标签快速筛选；点击任意文章即可阅读。
-
-所有文章保存在**这台电脑的浏览器本地**（localStorage），不会上传到任何服务器。`
-  },
-  {
-    id: 'seed-sample',
-    title: '留白不是空白，而是思考发生的地方',
-    category: '设计',
-    tags: ['写作', '思考'],
-    createdAt: '2025-01-18T08:30:00',
-    updatedAt: '2025-01-18T08:30:00',
-    content: `我们总在努力填满空间、日程和注意力。但真正重要的想法，往往在没有被安排的时刻出现。
-
-## 空出来的部分
-
-一张页面的呼吸感，和一个人的日程一样——塞得太满，就失去了被意外击中的可能。
-
-## 试着这样做
-
-1. 每天留出 30 分钟，什么都不安排。
-2. 写文章时，先写下标题，再让正文自己生长。
-3. 学会对「填充」说不。`
-  }
-];
-
 /* 首篇文章：对应磁盘存档 2026/For You/index.html，以网页跳转形式打开 */
 const FIRST_ARTICLE_ID = '2026-01-01-first';
 const FIRST_ARTICLE = {
@@ -222,16 +184,14 @@ function loadArticles() {
   }
 
   if (!data) {
-    data = SEED_ARTICLES.map((a) => ({ ...a }));
+    data = [];
     persistArticles(data);
     return data;
   }
 
-  // 品牌/功能更名：若「欢迎使用」示例文章还是旧文案，则更新为新版
-  const welcome = data.find((a) => a.id === 'seed-welcome');
-  if (welcome && (welcome.title === '欢迎使用墨库' || String(welcome.content).includes('＋ 新建文章') || String(welcome.content).includes('导出 JSON 备份'))) {
-    Object.assign(welcome, { ...SEED_ARTICLES.find((a) => a.id === 'seed-welcome') });
-  }
+  // 删除自动创建的示例文章（seed-* 为旧版示例数据，不再生成）
+  const withoutSeeds = data.filter((a) => !String(a.id || '').startsWith('seed-'));
+  if (withoutSeeds.length !== data.length) data = withoutSeeds;
 
   // 首篇文章：不存在则写入（一次性的，刷新不会重复）
   if (!data.some((a) => a.id === FIRST_ARTICLE_ID)) {
