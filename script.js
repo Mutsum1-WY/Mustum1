@@ -207,7 +207,14 @@ function loadArticles() {
     }
   }
 
-  persistArticles(data); // 写入新存储键（旧键保留作备份）
+  persistArticles(data); // 写入新存储键
+
+  // 彻底清除：旧版「墨库」存储键（含示例文章残留）不再保留
+  try {
+    localStorage.removeItem(LEGACY_STORE_KEY);
+    localStorage.removeItem(LEGACY_PREF_KEY);
+  } catch (e) { /* 忽略 */ }
+
   return data;
 }
 
