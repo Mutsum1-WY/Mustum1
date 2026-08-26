@@ -1,16 +1,17 @@
 'use strict';
 
 /* ============================================================
-   风文库 WIND PAGES · 个人文章存储
-   纯前端：localStorage 持久化，支持 Markdown 写作、
-   搜索筛选、导入导出备份、未保存草稿恢复。
+   Rain Pages · 个人文章存储
+   纯前端：localStorage 持久化，支持搜索、浏览与阅读文章。
    ============================================================ */
 
 /* ---------------- 常量与工具 ---------------- */
 
-const STORE_KEY = 'windpages.articles.v1';
-const PREF_KEY = 'windpages.prefs.v1';
-/* 旧版「墨库」存储键，用于数据迁移（改名后保留读取兼容） */
+const STORE_KEY = 'rainpages.articles.v1';
+const PREF_KEY = 'rainpages.prefs.v1';
+/* 旧版存储键，用于数据迁移（改名后保留读取兼容，迁移完成后清除） */
+const LEGACY_WIND_STORE_KEY = 'windpages.articles.v1';
+const LEGACY_WIND_PREF_KEY = 'windpages.prefs.v1';
 const LEGACY_STORE_KEY = 'inkwell.articles.v1';
 const LEGACY_PREF_KEY = 'inkwell.prefs.v1';
 
@@ -173,10 +174,10 @@ function loadArticles() {
     }
   } catch (e) { /* 数据损坏时重建 */ }
 
-  // 迁移：首次打开时读取旧版「墨库」的数据
+  // 迁移：读取旧版存储键的数据（先「风文库」windpages.*，再「墨库」inkwell.*）
   if (!data) {
     try {
-      const legacy = localStorage.getItem(LEGACY_STORE_KEY);
+      const legacy = localStorage.getItem(LEGACY_WIND_STORE_KEY) || localStorage.getItem(LEGACY_STORE_KEY);
       if (legacy) {
         const parsed = JSON.parse(legacy);
         if (Array.isArray(parsed)) data = parsed;
@@ -211,8 +212,10 @@ function loadArticles() {
 
   persistArticles(data); // 写入新存储键
 
-  // 彻底清除：旧版「墨库」存储键（含示例文章残留）不再保留
+  // 彻底清除：旧版存储键（windpages.* / inkwell.*）不再保留
   try {
+    localStorage.removeItem(LEGACY_WIND_STORE_KEY);
+    localStorage.removeItem(LEGACY_WIND_PREF_KEY);
     localStorage.removeItem(LEGACY_STORE_KEY);
     localStorage.removeItem(LEGACY_PREF_KEY);
   } catch (e) { /* 忽略 */ }
@@ -230,7 +233,7 @@ function persistArticles(list) {
 
 function loadPrefs() {
   try {
-    const raw = localStorage.getItem(PREF_KEY) || localStorage.getItem(LEGACY_PREF_KEY);
+    const raw = localStorage.getItem(PREF_KEY) || localStorage.getItem(LEGACY_WIND_PREF_KEY) || localStorage.getItem(LEGACY_PREF_KEY);
     return raw ? JSON.parse(raw) : {};
   } catch (e) {
     return {};
@@ -436,7 +439,7 @@ function renderReader() {
   el.readerTags.innerHTML = (a.tags || []).map((t) => `<span class="tag-chip">${esc(t)}</span>`).join('');
   el.readerContent.innerHTML = renderMarkdown(a.content);
   el.readerFooter.textContent = `最后更新：${fmtTime(a.updatedAt)}`;
-  document.title = `${a.title} · 风文库`;
+  document.title = `${a.title} · Rain Pages`;
 }
 
 /* ---------------- 事件绑定 ---------------- */
@@ -493,13 +496,13 @@ $('#footerTopBtn').addEventListener('click', () => {
 });
 
 // 阅读视图
-$('#backBtn').addEventListener('click', () => { setView('list'); document.title = '风文库 · Wind Pages'; });
+$('#backBtn').addEventListener('click', () => { setView('list'); document.title = 'Rain Pages'; });
 
 // 快捷键：Esc 从阅读返回列表
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && view === 'reader') {
     setView('list');
-    document.title = '风文库 · Wind Pages';
+    document.title = 'Rain Pages';
   }
 });
 

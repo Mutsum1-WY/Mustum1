@@ -1,20 +1,20 @@
 /* ============================================================
-   风文库 WIND PAGES · 个人文章存储
+   Rain Pages · 个人文章存储
    全新设计：清爽、克制、以写作为中心
    ============================================================ */
 
 :root {
-  --bg: #f5f4ef;
-  --panel: #fffdf9;
-  --ink: #26241f;
-  --muted: #8b867a;
-  --faint: #b5b0a4;
-  --line: #e3e0d5;
-  --line-strong: #d2cec0;
-  --accent: #1e7a5a;
-  --accent-strong: #17603f;
-  --accent-soft: #e2efe8;
-  --mono-bg: #f0eee6;
+  --bg: #f6f8fb;
+  --panel: #ffffff;
+  --ink: #0f1b2d;
+  --muted: #64748b;
+  --faint: #9aa7b8;
+  --line: #e5eaf2;
+  --line-strong: #cfd8e4;
+  --accent: #1e3a8a;
+  --accent-strong: #16296b;
+  --accent-soft: #e8edf9;
+  --mono-bg: #f0f3f8;
   --sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   --serif: Georgia, "Noto Serif SC", "Songti SC", "STSong", SimSun, serif;
   --mono: ui-monospace, "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
@@ -24,7 +24,7 @@
   /* 首页顶部背景图：修改下面这行路径即可替换（当前使用 src/shiki.jpg） */
   --hero-img: url('src/shiki.jpg');
   --radius: 12px;
-  --shadow: 0 1px 2px rgba(38, 36, 31, .05), 0 4px 14px rgba(38, 36, 31, .04);
+  --shadow: 0 1px 2px rgba(15, 27, 45, .05), 0 4px 14px rgba(15, 27, 45, .04);
 }
 
 * { box-sizing: border-box; }
@@ -211,11 +211,11 @@ body.topbar-fixed .topbar {
   padding: 0 clamp(24px, 6vw, 72px);
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(245, 244, 239, 0) 55%, rgba(245, 244, 239, .85) 100%),
-    linear-gradient(115deg, rgba(18, 32, 26, .8) 0%, rgba(18, 32, 26, .4) 55%, rgba(30, 122, 90, .32) 100%),
+    linear-gradient(180deg, rgba(246, 248, 251, 0) 55%, rgba(246, 248, 251, .88) 100%),
+    linear-gradient(115deg, rgba(10, 22, 48, .82) 0%, rgba(10, 22, 48, .45) 55%, rgba(30, 58, 138, .38) 100%),
     var(--hero-img) center / cover no-repeat,
-    linear-gradient(120deg, #174e3a, #0e3327);
-  color: #f7f5ee;
+    linear-gradient(120deg, #16327a, #0a1740);
+  color: #f5f8ff;
   --shrink: 0;
 }
 
@@ -235,14 +235,14 @@ body.topbar-fixed .topbar {
   font-size: 13px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(247, 245, 238, .75);
+  color: rgba(255, 255, 255, .8);
 }
 
 .hero-eyebrow::before {
   content: '';
   width: 34px;
   height: 2px;
-  background: #ffd98a;
+  background: #bfdbfe;
 }
 
 /* 标题 + 头像 并排一行 */
@@ -263,7 +263,7 @@ body.topbar-fixed .topbar {
   letter-spacing: .01em;
 }
 
-.hero-title em { font-style: normal; color: #ffd98a; }
+.hero-title em { font-style: normal; color: #bfdbfe; }
 
 /* GitHub 头像链接 */
 .hero-avatar {
@@ -272,15 +272,15 @@ body.topbar-fixed .topbar {
   height: 76px;
   flex: none;
   border-radius: 50%;
-  border: 2px solid rgba(247, 245, 238, .6);
+  border: 2px solid rgba(255, 255, 255, .6);
   overflow: hidden;
   transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
 .hero-avatar:hover {
   transform: scale(1.06);
-  border-color: #ffd98a;
-  box-shadow: 0 0 0 4px rgba(255, 217, 138, .25);
+  border-color: #bfdbfe;
+  box-shadow: 0 0 0 4px rgba(191, 219, 254, .3);
 }
 
 .hero-avatar img {
@@ -294,7 +294,7 @@ body.topbar-fixed .topbar {
   margin: 0 0 36px;
   font-size: 22px;
   line-height: 1.6;
-  color: rgba(247, 245, 238, .88);
+  color: rgba(255, 255, 255, .92);
 }
 
 /* 轮换动画：旧文案沉入水下（下坠 + 模糊） */
@@ -328,12 +328,12 @@ body.topbar-fixed .topbar {
 }
 
 .hero .btn.hero-ghost {
-  border-color: rgba(247, 245, 238, .55);
-  color: #f7f5ee;
-  background: rgba(247, 245, 238, .08);
+  border-color: rgba(255, 255, 255, .55);
+  color: #f5f8ff;
+  background: rgba(255, 255, 255, .08);
 }
 
-.hero .btn.hero-ghost:hover { background: rgba(247, 245, 238, .16); border-color: rgba(247, 245, 238, .8); }
+.hero .btn.hero-ghost:hover { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .85); }
 
 #articleGrid { scroll-margin-top: 90px; }
 
