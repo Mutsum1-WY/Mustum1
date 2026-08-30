@@ -21,8 +21,8 @@
   --topbar-h: 58px;
   --main-pad-y: 30px;
   --main-pad-x: 40px;
-  /* 首页顶部背景图：修改下面这行路径即可替换（当前使用 src/shiki.jpg） */
-  --hero-img: url('src/shiki.jpg');
+  /* 首页顶部背景图：修改下面这行路径即可替换（当前使用 src/shiki.jpg）；?v= 与站点版本号同步，用于缓存刷新 */
+  --hero-img: url('src/shiki.jpg?v=1.0.0');
   --radius: 12px;
   --shadow: 0 1px 2px rgba(15, 27, 45, .05), 0 4px 14px rgba(15, 27, 45, .04);
 }
@@ -706,6 +706,15 @@ body.topbar-fixed .topbar {
   font-size: 16px;
   font-style: italic;
   color: var(--muted);
+}
+
+/* 页脚版本戳 */
+.footer-version {
+  margin: 10px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: var(--faint);
 }
 
 .footer-top {

@@ -6,7 +6,9 @@
   <meta name="description" content="Rain Pages · 个人文章存储：本地保存、搜索与阅读你的文章。" />
   <title>Rain Pages</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23bfdbfe'/%3E%3Cstop offset='1' stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='url(%23g)'%3E%3Cpath d='M50 4C34 24 18 42 18 62a32 32 0 0 0 64 0C82 42 66 24 50 4z' transform='translate(7 13) scale(.62)'/%3E%3Cpath d='M50 4C34 24 18 42 18 62a32 32 0 0 0 64 0C82 42 66 24 50 4z' transform='translate(56 55) scale(.42)'/%3E%3Cpath d='M50 4C34 24 18 42 18 62a32 32 0 0 0 64 0C82 42 66 24 50 4z' transform='translate(68 18) scale(.26)'/%3E%3C/g%3E%3Cellipse cx='30' cy='46' rx='4.5' ry='7' fill='%23ffffff' opacity='0.35'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- 静态资源带版本参数：每次升级版本时，把下面两处 ?v= 与 script.js 中的 APP_VERSION 一起改成新版本号，
+       浏览器就会把 styles.css / script.js 当作新地址重新下载，避免旧缓存。 -->
+  <link rel="stylesheet" href="styles.css?v=1.0.0" />
 </head>
 <body class="topbar-fixed">
 
@@ -100,6 +102,7 @@
               <span class="footer-sub">PERSONAL ARCHIVE</span>
             </div>
             <p class="footer-desc">For wish, for blessing</p>
+            <p class="footer-version" id="footerVersion"></p>
             <button class="footer-top" id="footerTopBtn" type="button">回到顶部 ↑</button>
           </div>
         </footer>
@@ -129,6 +132,6 @@
   </div>
 
   <noscript><p style="padding:24px;text-align:center">Rain Pages 需要启用 JavaScript 才能运行。</p></noscript>
-  <script src="script.js"></script>
+  <script src="script.js?v=1.0.0"></script>
 </body>
 </html>

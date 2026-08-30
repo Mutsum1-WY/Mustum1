@@ -5,6 +5,24 @@
    纯前端：localStorage 持久化，支持搜索、浏览与阅读文章。
    ============================================================ */
 
+/* ---------------- 版本戳 ---------------- */
+
+/* 当前版本号：升级时改成新版本号，并同步修改 index.html 里
+   styles.css?v= 与 script.js?v= 的查询参数，浏览器即会重新下载资源。 */
+const APP_VERSION = '1.0.0';
+const VERSION_KEY = 'rainpages.version.v1';
+
+try {
+  const lastVersion = localStorage.getItem(VERSION_KEY);
+  if (lastVersion && lastVersion !== APP_VERSION) {
+    // 检测到版本更新：先记录新版本再刷新一次，确保页面加载最新资源
+    localStorage.setItem(VERSION_KEY, APP_VERSION);
+    location.reload();
+  } else {
+    localStorage.setItem(VERSION_KEY, APP_VERSION);
+  }
+} catch (e) { /* localStorage 不可用时忽略，不影响正常使用 */ }
+
 /* ---------------- 常量与工具 ---------------- */
 
 const STORE_KEY = 'rainpages.articles.v1';
@@ -553,6 +571,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------------- 初始化 ---------------- */
+
+// 页脚版本戳显示
+const footerVersionEl = $('#footerVersion');
+if (footerVersionEl) footerVersionEl.textContent = `v${APP_VERSION}`;
 
 renderLinks();
 renderList();
