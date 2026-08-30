@@ -22,6 +22,22 @@
       <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       <input id="searchInput" type="search" placeholder="搜索标题、正文、标签…" autocomplete="off" aria-label="搜索文章" />
     </div>
+
+    <!-- 友链 -->
+    <div class="links-wrap" id="linksWrap">
+      <button class="links-btn" id="linksBtn" type="button" aria-haspopup="true" aria-expanded="false" title="友链">
+        <svg class="links-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span>友链</span>
+      </button>
+      <div class="links-panel" id="linksPanel" hidden>
+        <div class="links-head">
+          <span>友链</span>
+          <span class="links-count" id="linksCount"></span>
+        </div>
+        <div class="links-list" id="linksList"></div>
+        <p class="links-note">时间是不会停下来的，我们只好走下去了。</p>
+      </div>
+    </div>
   </header>
 
   <div class="layout">

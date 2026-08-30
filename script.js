@@ -279,6 +279,47 @@ const el = {
 
 const topbarEl = document.querySelector('.topbar');
 
+/* ---------------- 友链（顶栏下拉面板） ---------------- */
+
+/* 友链清单：直接在这里增删改即可。
+   name 站点名（必填）
+   url  网址（必填）
+   desc 一句话简介（可选） */
+const FRIEND_LINKS = [
+  { name: 'GitHub', url: 'https://github.com/Mutsum1-WY', desc: 'Mutsum1的github' },
+  { name: 'LS的Blog', url: 'https://ls-hower.cc/', desc: 'LS的Blog' },
+  { name: '你知道哈基米德原理吗', url: 'https://nam1dame-github-io.vercel.app/', desc: 'nam1dame的博客' },
+];
+
+const linksWrapEl = $('#linksWrap');
+const linksBtnEl = $('#linksBtn');
+const linksPanelEl = $('#linksPanel');
+const linksListEl = $('#linksList');
+const linksCountEl = $('#linksCount');
+
+function renderLinks() {
+  linksCountEl.textContent = `${FRIEND_LINKS.length} 个站点`;
+  linksListEl.innerHTML = FRIEND_LINKS.map((l) => `
+    <a class="links-item" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.url)}">
+      <span class="links-info">
+        <span class="links-name">${esc(l.name)}</span>
+        ${l.desc ? `<span class="links-desc">${esc(l.desc)}</span>` : ''}
+      </span>
+    </a>`).join('');
+}
+
+function setLinksOpen(open) {
+  linksPanelEl.hidden = !open;
+  linksBtnEl.setAttribute('aria-expanded', String(open));
+}
+
+linksBtnEl.addEventListener('click', () => setLinksOpen(linksPanelEl.hidden));
+
+// 点击面板外部任意位置关闭
+document.addEventListener('click', (e) => {
+  if (!linksPanelEl.hidden && !linksWrapEl.contains(e.target)) setLinksOpen(false);
+});
+
 /* ---------------- 视图切换 ---------------- */
 
 function setView(v) {
@@ -498,8 +539,12 @@ $('#footerTopBtn').addEventListener('click', () => {
 // 阅读视图
 $('#backBtn').addEventListener('click', () => { setView('list'); document.title = 'Rain Pages'; });
 
-// 快捷键：Esc 从阅读返回列表
+// 快捷键：Esc 优先关闭友链面板；阅读视图下再返回列表
 document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !linksPanelEl.hidden) {
+    setLinksOpen(false);
+    return;
+  }
   if (e.key === 'Escape' && view === 'reader') {
     setView('list');
     document.title = 'Rain Pages';
@@ -508,5 +553,6 @@ document.addEventListener('keydown', (e) => {
 
 /* ---------------- 初始化 ---------------- */
 
+renderLinks();
 renderList();
 updateScrollUI();
