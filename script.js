@@ -289,6 +289,7 @@ const FRIEND_LINKS = [
   { name: 'GitHub', url: 'https://github.com/Mutsum1-WY', desc: 'Mutsum1的github' },
   { name: 'LS的Blog', url: 'https://ls-hower.cc/', desc: 'LS的Blog' },
   { name: '你知道哈基米德原理吗', url: 'https://nam1dame-github-io.vercel.app/', desc: 'nam1dame的博客' },
+  { name: 'AceChann', url: 'https://acechann.github.io/', desc: '艾斯的小窝' },
 ];
 
 const linksWrapEl = $('#linksWrap');
