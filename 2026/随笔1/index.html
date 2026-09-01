@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="随笔1 · Rain Pages 个人文章" />
+  <title>随笔1 · Rain Pages</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23bfdbfe'/%3E%3Cstop offset='1' stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='url(%23g)'%3E%3Cpath d='M50 4C34 24 18 42 18 62a32 32 0 0 0 64 0C82 42 66 24 50 4z' transform='translate(7 13) scale(.62)'/%3E%3Cpath d='M50 4C34 24 18 42 18 62a32 32 0 0 0 64 0C82 42 66 24 50 4z' transform='translate(56 55) scale(.42)'/%3E%3Cpath d='M50 4C34 24 18 42 18 62a32 32 0 0 0 64 0C82 42 66 24 50 4z' transform='translate(68 18) scale(.26)'/%3E%3C/g%3E%3Cellipse cx='30' cy='46' rx='4.5' ry='7' fill='%23ffffff' opacity='0.35'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #0f1b2d;
+      --muted: #64748b;
+      --faint: #9aa7b8;
+      --line: #e5eaf2;
+      --accent: #1e3a8a;
+      --sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      --serif: Georgia, "Noto Serif SC", "Songti SC", "STSong", SimSun, serif;
+      --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    .topbar {
+      flex: none;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+    }
+    .brand-dot { width: 12px; height: 12px; border-radius: 3px; background: var(--accent); }
+    .brand-sub {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .22em;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .back-link {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    /* 内容区占满剩余可视高度，卡片垂直居中 */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    article {
+      width: 100%;
+      max-width: 920px;
+      padding: 76px 84px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .meta {
+      font-family: var(--mono);
+      font-size: 13.5px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+    h1 {
+      margin: 20px 0 40px;
+      font-family: var(--serif);
+      font-size: 56px;
+      line-height: 1.25;
+    }
+    .body {
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 2;
+      color: var(--muted);
+    }
+
+    /* 页脚固定在可视区域底部 */
+    footer {
+      flex: none;
+      width: 100%;
+      padding: 20px 24px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      article { padding: 32px 22px; }
+      h1 { font-size: 34px; }
+      .body { font-size: 17px; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../index.html">
+      <span class="brand-dot"></span>
+      <span>Rain Pages</span>
+      <span class="brand-sub">PERSONAL ARCHIVE</span>
+    </a>
+    <a class="back-link" href="../../index.html">← 返回文章库</a>
+  </header>
+
+  <main>
+    <article>
+      <div class="meta">2026-09-02 · RAIN PAGES ARCHIVE</div>
+      <h1>随笔1</h1>
+      <div class="body">本篇文章写于2026年9月2日，在开学前。那么我在干什么呢？
+        <br>第一件事就是我在学习rust，进度在学到循环和函数差不多吧，以及用递推写了一次斐波那契数列。其他的写法我不是很懂，但是以后应该会弄懂的吧。。。
+        <br>第二件事就是我在更新这个网站吧，这是这个网站的第一篇随笔，可能很短，我不知道能写多少。这个网站昨天我才加上友链（基本什么都没有），所以比较清冷。首页的几个句子来源于《空之境界》、《文学少女》与河野裕的《消失吧，群青（阶梯岛）》
+        <br>河野裕是一名我比较喜欢风格的作家，作品有种文青味（褒义），富有哲理，说《重启咲良田》可能是最合适的吧，因为这部作品热度比较高，(虽然我没看过这部作品)。
+        <br>好吧先写到这里，我早上起来想到什么的话会补上随笔2（maybe），顺带一提我现在在听玩电台系列，6657upup！🤓🤓🤓
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <span>For wish, for blessing</span>
+    <a href="../../index.html">回到文章库 ↑</a>
+  </footer>
+</body>
+</html>

@@ -9,7 +9,7 @@
 
 /* 当前版本号：升级时改成新版本号，并同步修改 index.html 里
    styles.css?v= 与 script.js?v= 的查询参数，浏览器即会重新下载资源。 */
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.0.1';
 const VERSION_KEY = 'rainpages.version.v1';
 
 try {
@@ -182,6 +182,23 @@ const FIRST_ARTICLE = {
   content: '',
 };
 
+/* 随笔1：对应磁盘存档 2026/随笔1/index.html（内容后续补充，正文在页面内编辑） */
+const ESSAY_1_ID = '2026-09-02-essay-1';
+const ESSAY_1_ARTICLE = {
+  id: ESSAY_1_ID,
+  title: '随笔1',
+  subtitle: '我在干什么',
+  category: '',
+  tags: [],
+  link: '2026/%E9%9A%8F%E7%AC%941/index.html',   // 2026/随笔1/index.html（URL 编码）
+  createdAt: '2026-09-02T00:00:00',
+  updatedAt: '2026-09-02T00:00:00',
+  content: '',
+};
+
+/* 内置文章（磁盘存档 + 网页跳转）：统一在此登记，刷新后自动出现在列表 */
+const BUILTIN_ARTICLES = [FIRST_ARTICLE, ESSAY_1_ARTICLE];
+
 function loadArticles() {
   let data = null;
   try {
@@ -213,18 +230,20 @@ function loadArticles() {
   const withoutSeeds = data.filter((a) => !String(a.id || '').startsWith('seed-'));
   if (withoutSeeds.length !== data.length) data = withoutSeeds;
 
-  // 首篇文章：不存在则写入（一次性的，刷新不会重复）
-  if (!data.some((a) => a.id === FIRST_ARTICLE_ID)) {
-    data.unshift({ ...FIRST_ARTICLE });
-  } else {
-    // 标题/跳转地址/日期/副标题同步：仅当仍是旧模板（或缺少字段、仍是模板日期）时更新，用户改过的不动
-    const first = data.find((a) => a.id === FIRST_ARTICLE_ID);
-    if (first && (first.title === '第一篇文章' || !first.link || !first.subtitle || first.subtitle === '内容待定' || first.updatedAt === '2026-01-01T00:00:00')) {
-      first.title = FIRST_ARTICLE.title;
-      first.subtitle = FIRST_ARTICLE.subtitle;
-      first.link = FIRST_ARTICLE.link;
-      first.createdAt = FIRST_ARTICLE.createdAt;
-      first.updatedAt = FIRST_ARTICLE.updatedAt;
+  // 内置文章：不存在则写入（一次性的，刷新不会重复）
+  for (const builtin of BUILTIN_ARTICLES) {
+    const existing = data.find((a) => a.id === builtin.id);
+    if (!existing) {
+      data.unshift({ ...builtin });
+    } else {
+      // 标题/跳转地址/日期/副标题同步：仅当仍是旧模板（或缺少字段、仍是模板日期）时更新，用户改过的不动
+      if (existing.title === '第一篇文章' || !existing.link || !existing.subtitle || existing.subtitle === '内容待定' || existing.updatedAt === '2026-01-01T00:00:00') {
+        existing.title = builtin.title;
+        existing.subtitle = builtin.subtitle;
+        existing.link = builtin.link;
+        existing.createdAt = builtin.createdAt;
+        existing.updatedAt = builtin.updatedAt;
+      }
     }
   }
 
